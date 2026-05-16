@@ -40,7 +40,7 @@ jobs:
 
             # Hotfix/* branches can only go into main or release
             hotfix/*)
-              if [[ "$TARGET" != "main" && "$TARGET" != "release" ]]; then
+              if [[ "$TARGET" != "main" && "$TARGET" != release/* ]]; then
                 echo "🚀 $SOURCE -❌-> 🎯 $TARGET"
                 echo " "
                 echo "❌ hotfix/* branches must target main or release/*."
@@ -60,34 +60,12 @@ jobs:
               fi
               ;;
 
-            # Feature branches can only go into develop
-            feature)
-              if [[ "$TARGET" != "develop" ]]; then
-                echo "🚀 $SOURCE -❌-> 🎯 $TARGET"
-                echo " "
-                echo "❌ feature branch must target develop."
-                echo "⚠️ Error: Merging from $SOURCE into '$TARGET' is prohibited."
-                exit 1
-              fi
-              ;;
-
             # Features/* branches can only go into feature
             feature/*)
               if [[ "$TARGET" != "feature" ]]; then
                 echo "🚀 $SOURCE -❌-> 🎯 $TARGET"
                 echo " "
                 echo "❌ feature/* branches must target feature."
-                echo "⚠️ Error: Merging from $SOURCE into '$TARGET' is prohibited."
-                exit 1
-              fi
-              ;;
-
-            # Bugfix branches can only go into develop
-            bugfix)
-              if [[ "$TARGET" != "develop" ]]; then
-                echo "🚀 $SOURCE -❌-> 🎯 $TARGET"
-                echo " "
-                echo "❌ bugfix branch must target develop."
                 echo "⚠️ Error: Merging from $SOURCE into '$TARGET' is prohibited."
                 exit 1
               fi
@@ -103,6 +81,28 @@ jobs:
                 exit 1
               fi
               ;;
+
+            # # Feature branches can only go into develop
+            # feature)
+            #   if [[ "$TARGET" != "develop" ]]; then
+            #     echo "🚀 $SOURCE -❌-> 🎯 $TARGET"
+            #     echo " "
+            #     echo "❌ feature branch must target develop."
+            #     echo "⚠️ Error: Merging from $SOURCE into '$TARGET' is prohibited."
+            #     exit 1
+            #   fi
+            #   ;;
+
+            # # Bugfix branches can only go into develop
+            # bugfix)
+            #   if [[ "$TARGET" != "develop" ]]; then
+            #     echo "🚀 $SOURCE -❌-> 🎯 $TARGET"
+            #     echo " "
+            #     echo "❌ bugfix branch must target develop."
+            #     echo "⚠️ Error: Merging from $SOURCE into '$TARGET' is prohibited."
+            #     exit 1
+            #   fi
+            #   ;;
 
           esac
 
