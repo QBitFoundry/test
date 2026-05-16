@@ -1,4 +1,4 @@
-﻿name: Branch Flow Protection
+﻿name: "Branch Flow Protection"
 
 on:
   pull_request:
