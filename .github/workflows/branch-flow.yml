@@ -11,7 +11,7 @@ on:
       - bugfix
 
 jobs:
-  validate-flow:
+  enforce-branch-flow:
     runs-on: ubuntu-latest
 
     steps:
