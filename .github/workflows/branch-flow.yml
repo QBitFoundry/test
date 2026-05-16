@@ -3,7 +3,7 @@ name: "Branch Flow Protection"
 on:
   pull_request:
     branches:
-      - bug-fixes
+      - develop
 
 jobs:
   enforce-branch-flow:
